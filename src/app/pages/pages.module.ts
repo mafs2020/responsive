@@ -9,6 +9,10 @@ import { rutasPageModule } from './pages.routes';
 // componentes
 import { InicioComponent } from './inicio/inicio.component';
 
+// ngrx
+import { StoreModule } from '@ngrx/store';
+import { productReducer } from './state/pages.reduce';
+
 @NgModule({
   declarations: [
     InicioComponent
@@ -16,7 +20,8 @@ import { InicioComponent } from './inicio/inicio.component';
   imports: [
     CommonModule,
     rutasPageModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature('pages', productReducer)
   ]
 })
 

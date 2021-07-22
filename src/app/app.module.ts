@@ -1,8 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+// ruts pdre
 import { rutasModuleRoot } from './app.routes';
+
+import { AppComponent } from './app.component';
+
+// ngrx
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './app.reduce';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -10,7 +17,14 @@ import { rutasModuleRoot } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    rutasModuleRoot
+    rutasModuleRoot,
+    // StoreDevtoolsModule.instrument({
+    //   name: 'APM Demo App DevTools',
+    //   maxAge: 25,
+    //   logOnly: environment.production
+    // }),
+    StoreModule.forRoot({'app': counterReducer}),
+    // EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
