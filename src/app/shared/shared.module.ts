@@ -13,7 +13,8 @@ import { AsideComponent } from './aside/aside.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AsideComponent
   ],
   imports: [
     CommonModule

@@ -1,0 +1,111 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: calc(100% - 300px);
+    right: 0;
+    top: 0;
+    // max-width: 1200px;
+}
+.header{
+    padding: 1rem;
+    display: inline-block;
+}
+.buscador{
+    margin: auto 0;
+    outline: 1px solid #000;
+}
+
+.buscador input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.hamburguesa:first-child {
+    width: 25px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.hamburguesa:nth-child(2) {
+    width: 20px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.hamburguesa {
+    width: 33px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+}
+.ff{
+    display: inline-block;
+    margin: auto 0;
+}
+
+nav{
+    margin: auto 20px;
+    align-items: center;
+}
+
+nav p {
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase;
+}
+.mrgen{
+    margin: 10px 30px;
+    display: inline-block;
+}
+h2{
+    color: #222;
+    text-transform: capitalize;
+    display: inline-block;
+}
+#nav-toggle{
+    display: none;
+}
+
+#nav-toggle:checked ~ header{
+    width: calc(100% - 85px);
+}
+// #nav-toggle:checked + .sidebar {
+// width: 200px;
+// }
+// .ff span {
+
+// }
+
+label span.las.la-bars{
+    color: var(--colorRosa);
+}
+
+@media screen and (max-width : 500px) {
+    header div h2 label {
+        background-color: var(--colorRosa);
+        padding: 5px;
+        margin-right: 5px;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+    }
+    header{
+        width: 100vw;
+    }
+    .buscador{
+        display: none;
+    }
+    label span.las.la-bars{
+        color: #fff;
+    }
+    #nav-toggle:checked ~ header{
+        width: 100%;
+    }
+}

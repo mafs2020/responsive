@@ -1,6 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+:root{
+    --colorObscuro: #1d2231;
+    --colorRosa: #de306f;
+    --colorTexto: #8390a2;
+}
+
+#nav-toggle:checked + .sidebar {
+    width: 70px !important;
+}
+
+.gg{
+    width: 85px !important;
+    // display: none;
+}
+
+#nav-toggle:checked + .sidebar .sidebar__brand h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child{
+    display: none !important;
+}
+
+.sidebar__menu #nav-toggle:checked ul li span:last-child{
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+
+    .gg{
+        // width: 85px !important;
+        display: none;
+    }
+    
 }
