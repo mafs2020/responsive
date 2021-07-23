@@ -3,13 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
 import { AsideService } from 'src/app/shared/services/aside.service';
-
+// import { Store } from '@ngrx/store';
+// import { State, getShowProductCode, getCurrentProduct, getProducts, getError } from '../state/product.reducer';
+// import * as ProductActions from '../state/product.actions';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss']
 })
 export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
+
   ss = this.asideService.mostrarAside$;
   subje = new Subject<never>();
   @ViewChild('main') main: ElementRef<HTMLDivElement>;
@@ -17,8 +20,23 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
     private render: Renderer2,
     private asideService: AsideService
   ) { }
+  // constructor(private store: Store<State>) { }
 
   ngOnInit(): void {
+    // Do NOT subscribe here because it uses an async pipe
+    // This gets the initial values until the load is complete.
+    // this.products$ = this.store.select(getProducts);
+
+    // // Do NOT subscribe here because it uses an async pipe
+    // this.errorMessage$ = this.store.select(getError);
+
+    // this.store.dispatch(ProductActions.loadProducts());
+
+    // // Do NOT subscribe here because it uses an async pipe
+    // this.selectedProduct$ = this.store.select(getCurrentProduct);
+
+    // // Do NOT subscribe here because it uses an async pipe
+    // this.displayCode$ = this.store.select(getShowProductCode);
     
   }
 
@@ -36,5 +54,9 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
     this.subje.next();
     this.subje.complete();
   }
+
+  // checkChanged(): void {
+  //   this.store.dispatch(ProductActions.toggleProductCode());
+  // }
 
 }

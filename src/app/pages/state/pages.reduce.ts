@@ -6,25 +6,25 @@ import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/
 
 
 export interface State extends AppState.State {
-    pages: ProductState
+    pages: PageState
 }
 
 // State for this feature (Product)
-export interface ProductState {
+export interface PageState {
     showProductCode: boolean;
     currentProductId: number | null;
     // products: Product[];
     error: string;
 }
 
-const initialState: ProductState = {
+const initialState: PageState = {
     showProductCode: true,
     currentProductId: null,
     // products: [],
     error: ''
 };
 
-const getProductFeatureState = createFeatureSelector<ProductState>('pages');
+const getProductFeatureState = createFeatureSelector<PageState>('pages');
 
 export const getShowProductCode = createSelector(
     getProductFeatureState,
@@ -54,15 +54,24 @@ export const getCurrentProduct = createSelector(
     }
 );
 
-export const productReducer = createReducer<ProductState>(
+export const getcurrentdddd = (custe: number) => {
+    createSelector(
+        getProductFeatureState,
+        (customers) => {
+            return customers[custe];
+        }
+    )
+};
+
+export const productReducer = createReducer<PageState>(
     initialState,
-    on(ProductActions.toggleProductCode, (state): ProductState => {
+    on(ProductActions.toggleProductCode, (state): PageState => {
         return {
             ...state,
             showProductCode: !state.showProductCode
         };
     }),
-    on(ProductActions.setCurrentProduct, (state, action): ProductState => {
+    on(ProductActions.setCurrentProduct, (state, action): PageState => {
         return {
             ...state,
             currentProductId: action.currentProductId

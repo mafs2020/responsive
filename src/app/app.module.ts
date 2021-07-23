@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 
 // ngrx
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './app.reduce';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,13 @@ import { counterReducer } from './app.reduce';
   imports: [
     BrowserModule,
     rutasModuleRoot,
-    // StoreDevtoolsModule.instrument({
-    //   name: 'APM Demo App DevTools',
-    //   maxAge: 25,
-    //   logOnly: environment.production
-    // }),
-    StoreModule.forRoot({'app': counterReducer}),
-    // EffectsModule.forRoot([])
+    StoreDevtoolsModule.instrument({
+      name: 'Demo',
+      maxAge: 25,
+      logOnly: environment.production
+    }),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
