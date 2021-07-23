@@ -13,6 +13,7 @@ export interface State extends AppState.State {
 export interface PageState {
     showProductCode: boolean;
     currentProductId: number | null;
+    usuarios: any[];
     // products: Product[];
     error: string;
 }
@@ -21,23 +22,35 @@ const initialState: PageState = {
     showProductCode: true,
     currentProductId: null,
     // products: [],
+    usuarios: [],
     error: ''
 };
 
-const getProductFeatureState = createFeatureSelector<PageState>('pages');
+const getPagesFeatureState = createFeatureSelector<PageState>('pages');
+
+
+export const getTodosUsuarioSelector = createSelector(
+    getPagesFeatureState,
+    state => state.usuarios
+);
+
+export const getTodosUsuarioFailure = createSelector(
+    getPagesFeatureState,
+    state => state.error
+);
 
 export const getShowProductCode = createSelector(
-    getProductFeatureState,
+    getPagesFeatureState,
     state => state.showProductCode
 );
 
 export const getCurrentProductId = createSelector(
-    getProductFeatureState,
+    getPagesFeatureState,
     state => state.currentProductId
 );
 
 export const getCurrentProduct = createSelector(
-    getProductFeatureState,
+    getPagesFeatureState,
     // getCurrentProductId,
     (state, currentProductId) => {
     if (currentProductId === 0) {
@@ -54,9 +67,10 @@ export const getCurrentProduct = createSelector(
     }
 );
 
+// formaa actuaal
 export const getcurrentdddd = (custe: number) => {
     createSelector(
-        getProductFeatureState,
+        getPagesFeatureState,
         (customers) => {
             return customers[custe];
         }
@@ -65,16 +79,23 @@ export const getcurrentdddd = (custe: number) => {
 
 export const productReducer = createReducer<PageState>(
     initialState,
-    on(ProductActions.toggleProductCode, (state): PageState => {
+    // TODO cambiar por los usuarios
+    on(ProductActions.todosLosUsuarios, (state): PageState => {
         return {
             ...state,
             showProductCode: !state.showProductCode
         };
     }),
-    on(ProductActions.setCurrentProduct, (state, action): PageState => {
+    on(ProductActions.todosLosUsuariosSucces, (state, action): PageState => {
         return {
             ...state,
-            currentProductId: action.currentProductId
+            usuarios: action.usuarios
         };
     }),
+    on(ProductActions.todosLosUsuariosFailure, (state, action): PageState => {
+        return {
+            ...state,
+            error: action.error
+        }
+    })
 );

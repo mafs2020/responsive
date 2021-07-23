@@ -6,6 +6,9 @@ import { rutasModuleRoot } from './app.routes';
 
 import { AppComponent } from './app.component';
 
+// httpmodule
+import { HttpClientModule } from '@angular/common/http';
+
 // ngrx
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -19,6 +22,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     rutasModuleRoot,
+    HttpClientModule,
     StoreDevtoolsModule.instrument({
       name: 'Demo',
       maxAge: 25,
