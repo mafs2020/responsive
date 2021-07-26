@@ -54,4 +54,9 @@
 <!-- <section style="margin: 100vh;"></section>
 <section style="margin: 100vh;"></section>
 <section style="margin: 100vh;"></section> -->
+<section *ngIf="errorMessage$ | async as errorM">
+    <h1>ocurrio un error</h1>
+    {{ errorM }}
+    {{ errorM | json }}
+</section>
 <app-footer></app-footer>

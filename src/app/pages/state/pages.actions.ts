@@ -2,14 +2,15 @@
 
 /* NgRx */
 import { createAction,  props } from '@ngrx/store';
+import { UserI } from 'src/app/interfaces/usuario';
 
-export const todosLosUsuarios = createAction(
+export const cargarUsuarios = createAction(
     '[Page Usuario] Todos Los Usuarios'
 );
 
 export const todosLosUsuariosSucces = createAction(
     '[Page Usuario] Todos Los Usuarios Succes',
-    props<{ usuarios: any[] }>()
+    props<{ usuarios: UserI[] }>()
 );
 
 export const todosLosUsuariosFailure = createAction(

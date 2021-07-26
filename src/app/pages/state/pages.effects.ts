@@ -18,8 +18,8 @@ export class PagesEffects {
     //     console.log('pltSSSSSSSSSSSSSSSSSSS');
     // }
     usuarioTodos$ = createEffect(() => this.actions$.pipe(
-            ofType(PagesActions.todosLosUsuarios),
-            switchMap(() => 
+            ofType(PagesActions.cargarUsuarios),
+            switchMap(() =>
                 this.usuarioService.usuariosAll$.pipe(
                     map(data => PagesActions.todosLosUsuariosSucces({ usuarios: data})),
                     catchError((err) => of(PagesActions.todosLosUsuariosFailure({error: err}))),

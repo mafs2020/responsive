@@ -3,6 +3,7 @@
 import * as AppState from '../../state/app.state';
 import * as ProductActions from './pages.actions';
 import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { UserI } from 'src/app/interfaces/usuario';
 
 
 export interface State extends AppState.State {
@@ -11,23 +12,19 @@ export interface State extends AppState.State {
 
 // State for this feature (Product)
 export interface PageState {
-    showProductCode: boolean;
+    
     currentProductId: number | null;
-    usuarios: any[];
-    // products: Product[];
+    usuarios: UserI[];
     error: string;
 }
 
 const initialState: PageState = {
-    showProductCode: true,
     currentProductId: null,
-    // products: [],
     usuarios: [],
     error: ''
 };
 
 const getPagesFeatureState = createFeatureSelector<PageState>('pages');
-
 
 export const getTodosUsuarioSelector = createSelector(
     getPagesFeatureState,
@@ -37,11 +34,6 @@ export const getTodosUsuarioSelector = createSelector(
 export const getTodosUsuarioFailure = createSelector(
     getPagesFeatureState,
     state => state.error
-);
-
-export const getShowProductCode = createSelector(
-    getPagesFeatureState,
-    state => state.showProductCode
 );
 
 export const getCurrentProductId = createSelector(
@@ -79,19 +71,13 @@ export const getcurrentdddd = (custe: number) => {
 
 export const productReducer = createReducer<PageState>(
     initialState,
-    // TODO cambiar por los usuarios
-    on(ProductActions.todosLosUsuarios, (state): PageState => {
-        return {
-            ...state,
-            showProductCode: !state.showProductCode
-        };
-    }),
     on(ProductActions.todosLosUsuariosSucces, (state, action): PageState => {
         return {
             ...state,
             usuarios: action.usuarios
         };
     }),
+
     on(ProductActions.todosLosUsuariosFailure, (state, action): PageState => {
         return {
             ...state,

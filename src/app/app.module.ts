@@ -7,13 +7,16 @@ import { rutasModuleRoot } from './app.routes';
 import { AppComponent } from './app.component';
 
 // httpmodule
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // ngrx
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+
+// interceptor
+import { InterceptorService } from './interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     rutasModuleRoot,
     HttpClientModule,
+    environment.production ? null :
     StoreDevtoolsModule.instrument({
       name: 'Demo',
       maxAge: 25,
@@ -31,7 +35,9 @@ import { environment } from 'src/environments/environment';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
