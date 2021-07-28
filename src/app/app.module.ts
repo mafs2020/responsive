@@ -6,6 +6,9 @@ import { rutasModuleRoot } from './app.routes';
 
 import { AppComponent } from './app.component';
 
+// tener los formularios
+// import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 // httpmodule
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 

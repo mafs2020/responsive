@@ -6,6 +6,7 @@ import { AsideService } from 'src/app/shared/services/aside.service';
 import { Store } from '@ngrx/store';
 import { State, getTodosUsuarioFailure, getTodosUsuarioSelector } from '../state/pages.reduce';
 import * as ProductActions from '../state/pages.actions';
+import { getToken } from 'src/app/login/state/login.reduce';
 
 @Component({
   selector: 'app-inicio',

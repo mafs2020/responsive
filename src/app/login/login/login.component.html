@@ -1,17 +1,25 @@
 <section class="login-card">
     <h2>carece</h2>
-    <form class="card">
+    <form class="card" [formGroup]="formulario">
         <h2>Login</h2>
         <div class="form__group">
-            <input type="text" class="form__input" placeholder="usuario" />
+            <input type="text" formControlName="usuario" class="form__input" placeholder="usuario" />
             <!-- <label for="" class="form__label">Usuario:</label> -->
             <div class="linea"></div>
+            <div *ngIf="formulario.get('usuario')?.hasError('required')">
+                <span>el usuario es requerido</span>
+            </div>
         </div>
         <div class="form__group">
-            <input type="password" class="form__input" placeholder="contraseña" />
+            <input type="password" formControlName="password" class="form__input" placeholder="contraseña" />
             <!-- <label for="" class="form__label">contraseña</label> -->
             <div class="linea"></div>
+            <div *ngIf="formulario.get('password')?.errors && formulario.get('password').dirty">
+                <span>el valor es requerido</span>
+            </div>
         </div>
+
+        {{ formulario.value | json }}
         <input (click)="enviar()" type="button" value="Ingresar">
     </form>
     <a routerLink="../">regresar</a>

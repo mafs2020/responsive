@@ -11,6 +11,9 @@ import { LoginEffects } from './state/login.effects';
 
 // componentes
 import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InterceptorService } from '../interceptor/interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -22,7 +25,12 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     rutasLoginModule,
     StoreModule.forFeature('login', LoginReducer),
-    EffectsModule.forFeature([LoginEffects])
+    EffectsModule.forFeature([LoginEffects]),
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  providers: [
+    
   ]
 })
 export class LoginModule { }

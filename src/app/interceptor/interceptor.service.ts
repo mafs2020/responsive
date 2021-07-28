@@ -24,7 +24,7 @@ export class InterceptorService implements HttpInterceptor  {
     });
 
     
-    if (!this.token) {
+    if (this.token == null) {
       return next.handle(req);
     }
 

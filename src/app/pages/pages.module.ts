@@ -18,6 +18,8 @@ import { EffectsModule } from '@ngrx/effects';
 // registrar los efectos
 import { PagesEffects } from './state/pages.effects';
 import { OtroComponent } from './otro/otro.component';
+import { InterceptorService } from '../interceptor/interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,9 @@ import { OtroComponent } from './otro/otro.component';
     SharedModule,
     StoreModule.forFeature('pages', productReducer),
     EffectsModule.forFeature([PagesEffects])
+  ], 
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ]
 })
 

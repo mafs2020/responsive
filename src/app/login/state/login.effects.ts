@@ -24,8 +24,8 @@ export class LoginEffects {
         ofType(LoginActions.login),
         switchMap(({ usuario, password }) =>
                 this.usuarioService.login(usuario, password).pipe(
-                    map(data => {
-                        LoginActions.loginSucces({ usuario: data.usuario, token: data.token });
+                    map(({ token, usuario }) => {
+                        LoginActions.loginSucces({ usuario: usuario, token: token });
                         this.router.navigate(['/inicio']);
                     }),
                     catchError((err) => of(LoginActions.loginFailure({error: err}))),
