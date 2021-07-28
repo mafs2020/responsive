@@ -17,10 +17,12 @@ import { productReducer } from './state/pages.reduce';
 import { EffectsModule } from '@ngrx/effects';
 // registrar los efectos
 import { PagesEffects } from './state/pages.effects';
+import { OtroComponent } from './otro/otro.component';
 
 @NgModule({
   declarations: [
-    InicioComponent
+    InicioComponent,
+    OtroComponent
   ],
   imports: [
     CommonModule,

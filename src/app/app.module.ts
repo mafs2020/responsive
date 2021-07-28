@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 
 // interceptor
 import { InterceptorService } from './interceptor/interceptor.service';
+import { rutasLoginModule } from './login/login.routes';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { InterceptorService } from './interceptor/interceptor.service';
   imports: [
     BrowserModule,
     rutasModuleRoot,
+    rutasLoginModule,
     HttpClientModule,
-    environment.production ? null :
+    // environment.production ? null :
     StoreDevtoolsModule.instrument({
       name: 'Demo',
       maxAge: 25,

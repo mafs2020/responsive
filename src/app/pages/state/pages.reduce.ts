@@ -12,7 +12,8 @@ export interface State extends AppState.State {
 
 // State for this feature (Product)
 export interface PageState {
-    
+    usuario: UserI | null;
+    token: string;
     currentProductId: number | null;
     usuarios: UserI[];
     error: string;
@@ -20,6 +21,8 @@ export interface PageState {
 
 const initialState: PageState = {
     currentProductId: null,
+    token: '',
+    usuario: null,
     usuarios: [],
     error: ''
 };
@@ -39,6 +42,16 @@ export const getTodosUsuarioFailure = createSelector(
 export const getCurrentProductId = createSelector(
     getPagesFeatureState,
     state => state.currentProductId
+);
+
+export const getToken = createSelector(
+    getPagesFeatureState,
+    state => state.token
+);
+
+export const getUsurio = createSelector(
+    getPagesFeatureState,
+    state => state.usuario
 );
 
 export const getCurrentProduct = createSelector(
@@ -83,5 +96,5 @@ export const productReducer = createReducer<PageState>(
             ...state,
             error: action.error
         }
-    })
+    }),
 );
