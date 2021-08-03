@@ -28,6 +28,7 @@ export class InterceptorService implements HttpInterceptor  {
       return next.handle(req);
     }
 
+    console.log('ffffffffffffffffffffffffffffff :>> ', this.token);
     const httpReq = req.clone({
       headers: new HttpHeaders({
         token: this.token

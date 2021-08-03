@@ -1,56 +1,29 @@
 <app-aside></app-aside>
 <main #main>
     <app-header></app-header>
-    <section>
+    <section *ngIf="usuarios$ | async as usuarios">
         <div class="cards">
-            <div class="card__single">
-                <div>
-                    <h3>titulo</h3>
-                    <span>lorem</span>
-                </div>
-                <div><span>
 
-                    <i class="far fa-address-card"></i> 
-                </span>
-                </div>
-            </div>
-            <div class="card__single">
-                <div>
-                    <h3>titulo</h3>
-                    <span>lorem</span>
-                </div>
-                <div><span>
+                <div class="card__single" *ngFor="let usu of usuarios">
+                    <div>
+                        <h3>{{ usu.nombre }}</h3>
+                        <span> {{ usu.edad }} </span>
+                    </div>
+                    <div>
+                        <span>
 
-                    <i class="far fa-address-card"></i> 
-                </span>
+                            <i class="far fa-address-card"></i> 
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="card__single">
-                <div>
-                    <h3>titulo</h3>
-                    <span>lorem</span>
-                </div>
-                <div><span>
-
-                    <i class="far fa-address-card"></i> 
-                </span>
-                </div>
-            </div>
-            <div class="card__single">
-                <div>
-                    <h3>titulo</h3>
-                    <span>lorem</span>
-                </div>
-                <div><span>
-
-                    <i class="far fa-address-card"></i> 
-                </span>
-                </div>
-            </div>
         </div>
+        <section class="seccion" >
+        </section>
     </section>
     inicio
+    
     <a routerLink="/inicio/otro">otro</a>
+    
 </main>
 
 

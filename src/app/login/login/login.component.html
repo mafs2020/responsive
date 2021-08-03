@@ -6,7 +6,7 @@
             <input type="text" formControlName="usuario" class="form__input" placeholder="usuario" />
             <!-- <label for="" class="form__label">Usuario:</label> -->
             <div class="linea"></div>
-            <div *ngIf="formulario.get('usuario')?.hasError('required')">
+            <div *ngIf="formulario.get('usuario')?.errors?.required">
                 <span>el usuario es requerido</span>
             </div>
         </div>
@@ -20,7 +20,7 @@
         </div>
 
         {{ formulario.value | json }}
-        <input (click)="enviar()" type="button" value="Ingresar">
+        <input [disabled]="!formulario.valid" (click)="enviar()" type="button" value="Ingresar">
     </form>
     <a routerLink="../">regresar</a>
 </section>

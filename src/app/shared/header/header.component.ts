@@ -1,5 +1,7 @@
 import { AfterViewInit } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterEvent, Event } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { AsideService } from '../services/aside.service';
 
 @Component({
@@ -11,13 +13,15 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ff: HTMLInputElement;
   hh: NodeListOf<Element>;
   agregar = true;
-  constructor(private asideService: AsideService) { }
+  constructor(
+    private asideService: AsideService
+  ) { }
 
   ngOnInit(): void {
     const d = document.querySelector('#nav-toggle') as HTMLInputElement;
     d.checked = false;
     this.ff= document.querySelector('.sidebar') as HTMLInputElement;
-    console.log( this.ff );
+    // console.log( this.ff );
   }
   f() {
     console.log('object');
@@ -28,6 +32,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.hh = document.querySelectorAll('a span:not( :first-child )');
-    console.log('hhh', this.hh );
+    // console.log('hhh', this.hh );
   }
 }

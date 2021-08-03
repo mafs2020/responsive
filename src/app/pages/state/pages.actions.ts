@@ -18,6 +18,23 @@ export const todosLosUsuariosFailure = createAction(
     props<{error: string}>()
 );
 
+export const login = createAction(
+    '[Login] usuario login',
+    props<{usuario: string, password: string }>()
+);
+
+export const loginSucces = createAction(
+    '[Login] usurio Login Succes',
+    props<{ token: string, usuario: UserI }>()
+);
+
+export const loginFailure = createAction(
+    '[Login] usuario Login Failure',
+    props<{error: string}>()
+);
+
+
+
 export const initializeCurrentProduct = createAction(
     '[Product] Initialize Current Product'
 );

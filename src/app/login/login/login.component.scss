@@ -69,4 +69,11 @@ input[type="button"]{
         border: 1px solid cadetblue;
         border-radius: 10px;
     }
+    &:disabled{
+        background-color: #868B8E;
+        color: #B9B7BD;
+        cursor: not-allowed;
+        outline: none;
+        border: none;
+    }
 }

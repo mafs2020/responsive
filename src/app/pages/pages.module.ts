@@ -13,13 +13,15 @@ import { InicioComponent } from './inicio/inicio.component';
 // ngrx
 import { StoreModule } from '@ngrx/store';
 //reducer que necesita el modulo
-import { productReducer } from './state/pages.reduce';
+import { pageReducer } from './state/pages.reduce';
 import { EffectsModule } from '@ngrx/effects';
+
 // registrar los efectos
 import { PagesEffects } from './state/pages.effects';
 import { OtroComponent } from './otro/otro.component';
 import { InterceptorService } from '../interceptor/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     CommonModule,
     rutasPageModule,
     SharedModule,
-    StoreModule.forFeature('pages', productReducer),
+    StoreModule.forFeature('pages', pageReducer),
     EffectsModule.forFeature([PagesEffects])
   ], 
   providers: [

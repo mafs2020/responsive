@@ -16,11 +16,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
 
 // interceptor
 import { InterceptorService } from './interceptor/interceptor.service';
 import { rutasLoginModule } from './login/login.routes';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,17 +31,12 @@ import { rutasLoginModule } from './login/login.routes';
     rutasModuleRoot,
     rutasLoginModule,
     HttpClientModule,
-    // environment.production ? null :
-    StoreDevtoolsModule.instrument({
-      name: 'Demo',
-      maxAge: 25,
-      logOnly: environment.production
-    }),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

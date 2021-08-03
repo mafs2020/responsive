@@ -20,18 +20,5 @@ export class LoginEffects {
         private router: Router
     ) {}
 
-    usuarioLogin$ = createEffect(() => this.actions$.pipe(
-        ofType(LoginActions.login),
-        switchMap(({ usuario, password }) =>
-                this.usuarioService.login(usuario, password).pipe(
-                    map(({ token, usuario }) => {
-                        LoginActions.loginSucces({ usuario: usuario, token: token });
-                        this.router.navigate(['/inicio']);
-                    }),
-                    catchError((err) => of(LoginActions.loginFailure({error: err}))),
-                    catchError((err) => EMPTY),
-                    catchError((err) => throwError(err))
-                )
-            )
-    ), { dispatch: false });
+    
 }

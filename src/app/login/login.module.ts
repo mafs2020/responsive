@@ -24,8 +24,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   imports: [
     CommonModule,
     rutasLoginModule,
-    StoreModule.forFeature('login', LoginReducer),
-    EffectsModule.forFeature([LoginEffects]),
+    // StoreModule.forFeature('login', LoginReducer),
+    // EffectsModule.forFeature([LoginEffects]),
     ReactiveFormsModule,
     FormsModule,
   ],

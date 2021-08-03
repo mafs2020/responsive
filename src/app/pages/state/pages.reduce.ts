@@ -54,6 +54,11 @@ export const getUsurio = createSelector(
     state => state.usuario
 );
 
+// export const getLoginFailure = createSelector(
+//     getPagesFeatureState,
+//     state => state.error
+// );
+
 export const getCurrentProduct = createSelector(
     getPagesFeatureState,
     // getCurrentProductId,
@@ -82,12 +87,12 @@ export const getcurrentdddd = (custe: number) => {
     )
 };
 
-export const productReducer = createReducer<PageState>(
+export const pageReducer = createReducer<PageState>(
     initialState,
-    on(ProductActions.todosLosUsuariosSucces, (state, action): PageState => {
+    on(ProductActions.todosLosUsuariosSucces, (state, { usuarios }): PageState => {
         return {
             ...state,
-            usuarios: action.usuarios
+            usuarios
         };
     }),
 
@@ -97,4 +102,18 @@ export const productReducer = createReducer<PageState>(
             error: action.error
         }
     }),
+
+    on(ProductActions.loginSucces, (state, { usuario, token }): PageState => {
+        return {
+            ...state,
+            usuario,
+            token
+        }
+    }),
+    on(ProductActions.loginFailure, (state, { error }): PageState => {
+        return {
+            ...state,
+            error
+        }
+    })
 );

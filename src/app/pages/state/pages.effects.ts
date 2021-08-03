@@ -1,9 +1,16 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+
+// ngrx
 import { Actions, createEffect, ofType, OnInitEffects } from "@ngrx/effects";
-import { EMPTY, of, throwError } from "rxjs";
-import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
-import { UsuariosService } from "../services/usuarios.service";
 import * as PagesActions from './pages.actions';
+
+// observables
+import { EMPTY, of, throwError } from "rxjs";
+import { catchError, map, mergeMap, switchMap, tap } from "rxjs/operators";
+
+// servicio
+import { UsuariosService } from "../services/usuarios.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +19,8 @@ export class PagesEffects {
 // export class PagesEffects implements OnInitEffects {
     constructor(
         private actions$: Actions,
-        private usuarioService: UsuariosService
+        private usuarioService: UsuariosService,
+        private router: Router
     ) {}
     // ngrxOnInitEffects(): PagesActions {
     //     console.log('pltSSSSSSSSSSSSSSSSSSS');
@@ -30,6 +38,25 @@ export class PagesEffects {
         )
         // ), { dispatch: false }
     );
+
+    usuarioLogin$ = createEffect(() => this.actions$.pipe(
+        ofType(PagesActions.login),
+        switchMap(({ usuario, password }) =>
+                this.usuarioService.login(usuario, password).pipe(
+                    map(({ token, usuario }) => {
+                        PagesActions.loginSucces({ usuario: usuario, token: token });
+                        this.router.navigate(['/inicio']);
+                    }),
+                    catchError((err) => of(PagesActions.loginFailure({error: err}))),
+                    catchError((err) => EMPTY),
+                    catchError((err) => throwError(err)),
+                    catchError((err) => {
+                        console.log(err);
+                        return throwError(err)
+                    })
+                )
+            )
+    ), { dispatch: false });
 }
 
 
