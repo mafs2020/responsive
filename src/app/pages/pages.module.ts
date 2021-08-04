@@ -21,14 +21,12 @@ import { PagesEffects } from './state/pages.effects';
 import { OtroComponent } from './otro/otro.component';
 import { InterceptorService } from '../interceptor/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     InicioComponent,
-    OtroComponent,
-    DashboardComponent
+    OtroComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +36,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EffectsModule.forFeature([PagesEffects])
   ], 
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ]
 })
 
