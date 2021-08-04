@@ -8,7 +8,7 @@ import { AsideService } from 'src/app/shared/services/aside.service';
 import { Router, Event, RouterEvent, NavigationEnd, NavigationStart } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { State, getTodosUsuarioFailure, getTodosUsuarioSelector } from '../state/pages.reduce';
+import { State, getTodosUsuarioFailure, getTodosUsuarioSelector, selectElimininarUsuarioSuccesProperty } from '../state/pages.reduce';
 import * as ProductActions from '../state/pages.actions';
 import { getToken } from 'src/app/login/state/login.reduce';
 import { UserI } from 'src/app/interfaces/usuario';
@@ -25,7 +25,7 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
   ss = this.asideService.mostrarAside$;
   subje = new Subject<never>();
   errorMessage$: Observable<any>;
-  usuarios$: Observable<UserI[]>;
+  usuarios: UserI[];
   @ViewChild('main') main: ElementRef<HTMLDivElement>;
   observableSub: Subscription;
   constructor(
@@ -40,8 +40,9 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
     this.errorMessage$ = this.store.select( getTodosUsuarioFailure );
 
     this.store.dispatch( ProductActions.cargarUsuarios() );
-    this.usuarios$ = this.store.select( getTodosUsuarioSelector );
-
+    this.store.select( getTodosUsuarioSelector ).subscribe(data => this.usuarios = data);
+    this.store.select( selectElimininarUsuarioSuccesProperty )
+          .subscribe(data => this.store.dispatch( ProductActions.cargarUsuarios() ));
     // this.observableSub = this.store.select( getTodosUsuarioSelector ).subscribe(
     //   (dt) => console.log(dt),
     //   (err) => console.error(err),
@@ -82,11 +83,17 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
       ).subscribe(dt => console.log(dt));
   }
 
+  eliminr(us: UserI): void {
+    console.log(us);
+    this.store.dispatch( ProductActions.eliminarUsuario({id: us.id}) );
+    this.store.dispatch( ProductActions.eliminarUsuario({id: us.id}) );
+  }
+
   ngOnDestroy(): void {
     this.subje.next();
     this.subje.complete();
-    this.observableSub.unsubscribe();
-    console.log(this.observableSub.closed);
+    // this.observableSub.unsubscribe();
+    // console.log(this.observableSub.closed);
   }
 
 }

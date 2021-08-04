@@ -17,4 +17,7 @@ export class UsuariosService {
   login(usuario: string = 'pepe', password: string = '123456'): Observable<any> {
     return this.http.post<any>( `${environment.server}/login`, { nombre: usuario, password } );
   }
+  eliminar(id: number): Observable<any> {
+    return this.http.delete<any>( `${environment.server}/${id}`);
+  }
 }

@@ -4,7 +4,10 @@ import { InicioComponent } from './inicio/inicio.component';
 import { OtroComponent } from './otro/otro.component';
 
 const rutas: Routes = [
-    { path: '', component: InicioComponent },
+    {
+        path: '',
+        component: InicioComponent
+    },
     { path: 'otro', component: OtroComponent }
 ];
 

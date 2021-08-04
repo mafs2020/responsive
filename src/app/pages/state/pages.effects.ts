@@ -7,7 +7,7 @@ import * as PagesActions from './pages.actions';
 
 // observables
 import { EMPTY, of, throwError } from "rxjs";
-import { catchError, map, mergeMap, switchMap, tap } from "rxjs/operators";
+import { catchError, map, mergeMap, shareReplay, switchMap, tap } from "rxjs/operators";
 
 // servicio
 import { UsuariosService } from "../services/usuarios.service";
@@ -38,6 +38,20 @@ export class PagesEffects {
         )
         // ), { dispatch: false }
     );
+
+    eliminarUsuario$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(PagesActions.eliminarUsuario),
+            mergeMap(({ id }) =>
+                this.usuarioService.eliminar(id).pipe(
+                    shareReplay(),
+                    tap(data => console.log(data)),
+                    map(data => PagesActions.eliminarUsuarioSuccess({ key: data })),
+                    tap(data => of([])),
+                    catchError(error => of(PagesActions.eliminarUsuarioFailure({ error }))))
+            ),
+        );
+    });
 
     usuarioLogin$ = createEffect(() => this.actions$.pipe(
         ofType(PagesActions.login),

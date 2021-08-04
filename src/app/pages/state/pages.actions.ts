@@ -33,6 +33,20 @@ export const loginFailure = createAction(
     props<{error: string}>()
 );
 
+export const eliminarUsuario = createAction(
+    '[Page] Eliminar Usurio',
+    props<{id: number}>()
+);
+
+export const eliminarUsuarioSuccess = createAction(
+    '[Page] Eliminar Usurio Success',
+    props<{key: number}>()
+);
+
+export const eliminarUsuarioFailure = createAction(
+    '[Page] Eliminar Usurio filure',
+    props<{error: string}>()
+);
 
 
 export const initializeCurrentProduct = createAction(

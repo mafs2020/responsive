@@ -54,6 +54,17 @@ export const getUsurio = createSelector(
     state => state.usuario
 );
 
+export const selectElimininarUsuarioSuccesProperty = createSelector(
+    getPagesFeatureState,
+    state => state.currentProductId
+);
+
+export const selectElimininarUsuarioFailureProperty = createSelector(
+    getPagesFeatureState,
+    state => state.error
+);
+
+
 // export const getLoginFailure = createSelector(
 //     getPagesFeatureState,
 //     state => state.error
@@ -108,6 +119,20 @@ export const pageReducer = createReducer<PageState>(
             ...state,
             usuario,
             token
+        }
+    }),
+
+    on(ProductActions.eliminarUsuarioSuccess, (state, { key }): PageState => {
+        return {
+            ...state,
+            currentProductId: key
+        }
+    }),
+
+    on(ProductActions.eliminarUsuarioFailure, (state, { error }): PageState => {
+        return {
+            ...state,
+            error
         }
     }),
     on(ProductActions.loginFailure, (state, { error }): PageState => {

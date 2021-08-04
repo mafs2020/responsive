@@ -21,12 +21,14 @@ import { PagesEffects } from './state/pages.effects';
 import { OtroComponent } from './otro/otro.component';
 import { InterceptorService } from '../interceptor/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     InicioComponent,
-    OtroComponent
+    OtroComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

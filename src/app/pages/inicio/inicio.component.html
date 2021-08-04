@@ -1,21 +1,24 @@
 <app-aside></app-aside>
 <main #main>
     <app-header></app-header>
-    <section *ngIf="usuarios$ | async as usuarios">
+    <section *ngIf="usuarios.length > 0">
         <div class="cards">
-
-                <div class="card__single" *ngFor="let usu of usuarios">
+            <div class="contenedor__card" *ngFor="let usu of usuarios">
+                <div class="card__single">
                     <div>
                         <h3>{{ usu.nombre }}</h3>
                         <span> {{ usu.edad }} </span>
                     </div>
                     <div>
                         <span>
-
                             <i class="far fa-address-card"></i> 
                         </span>
                     </div>
                 </div>
+                <div>
+                    <input class="boton" type="button" value="Eliminar" (click)="eliminr(usu)">
+                </div>
+            </div>
         </div>
         <section class="seccion" >
         </section>
