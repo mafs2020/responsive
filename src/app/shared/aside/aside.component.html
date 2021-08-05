@@ -5,7 +5,7 @@
     <div class="sidebar__menu" >
         <ul>
             <li>
-                <a routerLink="/login">
+                <a routerLinkActive="active" routerLink="/login">
                     <span><i class="las la-igloo"></i></span>
                     <!-- <span *ngIf="this.mostrar">hola</span> -->
                     <span class="" >Login</span>
@@ -13,34 +13,34 @@
                 
             </li>
             <li>
-                <a href="#">
-                    <span><i class="las la-users"></i></span>
+                <a routerLinkActive="active" routerLink="inicio">
+                    <span><i class="las la-clipboard-list"></i></span>
                     <!-- <span *ngIf="this.mostrar">hola</span> -->
-                    <span class="" >hola</span>
+                    <span class="" >Inicio</span>
                 </a>
                 
             </li>
             <li>
-                <a href="#">
-                    <span><i class="las la-clipboard-list"></i></span>
+                <a routerLink="">
+                    <span><i class="las la-users"></i></span>
                     <!-- <span *ngIf="this.mostrar">hola</span> -->
-                    <span class="" >hola</span>
+                    <span class="" >Registrar</span>
                 </a>
                 
             </li>
             <li class="">
-                <a class="active" href="#">
+                <a  href="#">
                     <span><i class="las la-user-circle"></i></span>
                     <!-- <span *ngIf="this.mostrar">hola</span> -->
-                    <span class="" >hola</span>
+                    <span class="" >Perfil</span>
                 </a>
                 
             </li>
             <li>
-                <a href="#">
+                <a routerLinkActive="active" routerLink="/inicio/crear">
                     <span><i class="las la-receipt"></i></span>
                     <!-- <span *ngIf="this.mostrar">hola</span> -->
-                    <span class="" >hola</span>
+                    <span class="" >Crear</span>
                 </a>
                 
             </li>

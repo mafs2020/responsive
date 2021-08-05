@@ -1,0 +1,48 @@
+.crear{
+    margin: 1rem auto 0;
+}
+.form-group{
+    margin: 0.8rem;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+}
+
+.form-group input {
+    padding: 1rem;
+    display: inline-block;
+    margin: 0 auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+    outline: none;
+    width: 70%;
+    // text-transform: capitalize;
+    &:focus{
+        box-shadow: 0 0 5px blue;
+        border: 1px solid transparent;
+    }
+}
+
+p{
+    margin-bottom: 10px;
+    width: 25%;
+}
+input[type="submit"]{
+    background-color: darkred;
+    outline: none;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    text-transform: capitalize;
+    cursor: pointer;
+    &:disabled{
+        background-color: gray;
+        color: #fff;
+        cursor: not-allowed;
+    }
+}

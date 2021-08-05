@@ -17,6 +17,7 @@ export interface PageState {
     currentProductId: number | null;
     usuarios: UserI[];
     error: string;
+    msj: string;
 }
 
 const initialState: PageState = {
@@ -24,6 +25,7 @@ const initialState: PageState = {
     token: null,
     usuario: null,
     usuarios: [],
+    msj: '',
     error: ''
 };
 
@@ -64,6 +66,15 @@ export const selectElimininarUsuarioFailureProperty = createSelector(
     state => state.error
 );
 
+export const selectcrearAlumnoSuccess = createSelector(
+    getPagesFeatureState,
+    state => state.msj
+);
+
+export const selectCrearAlumnoFailure = createSelector(
+    getPagesFeatureState,
+    state => state.error
+);
 
 // export const getLoginFailure = createSelector(
 //     getPagesFeatureState,
@@ -140,5 +151,19 @@ export const pageReducer = createReducer<PageState>(
             ...state,
             error
         }
-    })
+    }),
+    // TODO HACER
+    on(ProductActions.crearAlumnoSuccess, (state, { msj }): PageState => {
+        console.log('state :>> ', state);
+        return {
+            ...state,
+            msj
+        }
+    }),
+    on(ProductActions.crearAlumnoFailure, (state, { error }): PageState => {
+        return {
+            ...state,
+            error
+        }
+    }),
 );

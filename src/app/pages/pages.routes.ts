@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { OtroComponent } from './otro/otro.component';
+import { CrearComponent } from './crear/crear.component';
 
 const rutas: Routes = [
     {
@@ -10,7 +10,7 @@ const rutas: Routes = [
         component: DashboardComponent,
         children: [
             { path: '', component: InicioComponent },
-            { path: 'otro', component: OtroComponent }
+            { path: 'crear', component: CrearComponent }
         ]
     },
 ];

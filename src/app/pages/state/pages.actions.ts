@@ -48,6 +48,22 @@ export const eliminarUsuarioFailure = createAction(
     props<{error: string}>()
 );
 
+export const crearAlumno = createAction(
+    '[Page] Crear Alumno',
+    props<{user: UserI}>()
+);
+
+export const crearAlumnoSuccess = createAction(
+    '[Page] Crear ALumno Success',
+    props<{msj: string}>()
+);
+
+export const crearAlumnoFailure = createAction(
+    '[Page] Crear Alumno Failure',
+    props<{error: string}>()
+);
+
+export const action = createAction('[Source] Event');
 
 export const initializeCurrentProduct = createAction(
     '[Product] Initialize Current Product'

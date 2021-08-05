@@ -12,6 +12,7 @@ import { catchError, distinctUntilChanged, map, mergeMap, shareReplay, switchMap
 // servicio
 import { UsuariosService } from "../services/usuarios.service";
 import { HttpErrorResponse } from "@angular/common/http";
+import { UserI } from "src/app/interfaces/usuario";
 
 @Injectable({
     providedIn: 'root'
@@ -75,6 +76,15 @@ export class PagesEffects {
             )
         ));
     // ), { dispatch: false });
+    updateU$ = createEffect(() => this.actions$.pipe(
+        ofType(PagesActions.crearAlumno),
+            mergeMap((state) =>
+            this.usuarioService.updateUser( state.user ).pipe(
+                map(() => PagesActions.crearAlumnoSuccess({msj: 'se creo el usuario'})),
+                catchError(err => of(PagesActions.crearAlumnoFailure({error:err})))
+            ))
+        )
+    );
 }
 
 
