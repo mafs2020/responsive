@@ -13,7 +13,7 @@ export interface State extends AppState.State {
 // State for this feature (Product)
 export interface PageState {
     usuario: UserI | null;
-    token: string;
+    token: string|null;
     currentProductId: number | null;
     usuarios: UserI[];
     error: string;
@@ -21,7 +21,7 @@ export interface PageState {
 
 const initialState: PageState = {
     currentProductId: null,
-    token: '',
+    token: null,
     usuario: null,
     usuarios: [],
     error: ''
@@ -117,8 +117,8 @@ export const pageReducer = createReducer<PageState>(
     on(ProductActions.loginSucces, (state, { usuario, token }): PageState => {
         return {
             ...state,
-            usuario,
-            token
+            token,
+            usuario
         }
     }),
 

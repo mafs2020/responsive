@@ -1,6 +1,6 @@
-<app-aside></app-aside>
+<!-- <app-aside></app-aside> -->
 <main #main>
-    <app-header></app-header>
+    <!-- <app-header></app-header> -->
     <section *ngIf="usuarios.length > 0">
         <div class="cards">
             <div class="contenedor__card" *ngFor="let usu of usuarios">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div>
-                    <input class="boton" type="button" value="Eliminar" (click)="eliminr(usu)">
+                    <input class="boton" type="button" value="Eliminar" (click)="toggleModal(usu.id)">
                 </div>
             </div>
         </div>
@@ -29,7 +29,25 @@
     
 </main>
 
-
+<div class="todo" *ngIf="mostrarModal">
+    <div class="centro">
+        <div class="header">
+            <p>Eliminar: </p>
+        </div>
+        <div class="body">
+            <p> ¿ deses <span> eliminar </span> ? </p>
+        </div>
+        
+        <div>
+            <hr />
+            <br />
+            <div class="footer">
+                <input type="button" value="cancelar" (click)="toggleModal()">
+                <input type="button" value="eliminar" (click)="eliminr(usu)">
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- <section style="margin: 100vh;"></section>
 <section style="margin: 100vh;"></section>
@@ -39,4 +57,3 @@
     {{ errorM }}
     {{ errorM | json }}
 </section>
-<app-footer></app-footer>

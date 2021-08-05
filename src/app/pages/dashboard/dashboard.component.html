@@ -1,0 +1,11 @@
+<app-aside></app-aside>
+<main #main>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+</main>
+
+<section *ngIf="errorMessage$ | async as errorM">
+    <h1>ocurrio un error</h1>
+    {{ errorM }}
+    {{ errorM | json }}
+</section>

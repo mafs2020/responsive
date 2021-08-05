@@ -123,3 +123,90 @@ main{
         margin-left: 0;
     }
 }
+
+.todo{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(000, 000, 000, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    // bottom: 0;
+    // z-index: 999999;
+}
+
+.centro{
+    background: #fff;
+    width: 300px;
+    height: 230px;
+    position: absolute;
+    left: 40%;
+    top: 30%;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column wrap;
+
+}
+
+.todo .centro .header {
+    width: 100%;
+    background-color: darkred;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+}
+.todo .centro .header p{
+    padding: 15px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.todo .centro .body {
+    padding: auto;
+    text-align: center;
+}
+
+.todo .centro .body span {
+    color: red;
+    font-weight: 500;
+}
+
+.todo .centro .footer input[type=button] {
+    padding: 10px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    // outline: none;
+    border-radius: 10px;
+    // &:hover{
+    //     // box-shadow: 0 0 5px #000;
+    // }
+    cursor: pointer;
+}
+
+.todo .centro .footer {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.todo .centro .footer input[type=button]:first-child {
+    background-color: var(--colorRosa);
+    border: 1px solid var(--colorRosa);
+    &:hover{
+        background-color: #fff;
+        color: var(--colorRosa);
+    }
+}
+
+.todo .centro .footer input[type=button]:last-child {
+    background-color: darkred;
+    border: 1px solid darkred;
+    &:hover{
+        background-color: #fff;
+        color: darkred;
+    }
+}

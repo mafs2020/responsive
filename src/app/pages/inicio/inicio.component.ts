@@ -1,16 +1,22 @@
 import { Component, OnInit, AfterViewInit, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 
+// rxjs
 import { Observable, Subject, Subscription } from 'rxjs';
 import { delay, filter, takeUntil, tap } from 'rxjs/operators';
 
+// services
 import { AsideService } from 'src/app/shared/services/aside.service';
 
-import { Router, Event, RouterEvent, NavigationEnd, NavigationStart } from '@angular/router';
+// loader events
+import { Router, Event, RouterEvent, NavigationEnd } from '@angular/router';
 
+// ngrx
 import { Store } from '@ngrx/store';
 import { State, getTodosUsuarioFailure, getTodosUsuarioSelector, selectElimininarUsuarioSuccesProperty } from '../state/pages.reduce';
 import * as ProductActions from '../state/pages.actions';
 import { getToken } from 'src/app/login/state/login.reduce';
+
+// interfce
 import { UserI } from 'src/app/interfaces/usuario';
 
 // import {AtomSpinner} from 'epic-spinners';
@@ -26,6 +32,8 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
   subje = new Subject<never>();
   errorMessage$: Observable<any>;
   usuarios: UserI[];
+  mostrarModal: boolean = false;
+  usurioEliminar: number;
   @ViewChild('main') main: ElementRef<HTMLDivElement>;
   observableSub: Subscription;
   constructor(
@@ -84,9 +92,14 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
   }
 
   eliminr(us: UserI): void {
-    console.log(us);
-    this.store.dispatch( ProductActions.eliminarUsuario({id: us.id}) );
-    this.store.dispatch( ProductActions.eliminarUsuario({id: us.id}) );
+    this.store.dispatch( ProductActions.eliminarUsuario({id: this.usurioEliminar}) );
+    this.store.dispatch( ProductActions.eliminarUsuario({id: this.usurioEliminar}) );
+    this.toggleModal();
+  }
+
+  toggleModal(id?: number): void {
+    this.usurioEliminar = id || 0;
+    this.mostrarModal = !this.mostrarModal;
   }
 
   ngOnDestroy(): void {
@@ -95,5 +108,4 @@ export class InicioComponent implements OnInit, OnDestroy, AfterViewInit  {
     // this.observableSub.unsubscribe();
     // console.log(this.observableSub.closed);
   }
-
 }

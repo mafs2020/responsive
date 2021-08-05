@@ -7,10 +7,11 @@ import * as PagesActions from './pages.actions';
 
 // observables
 import { EMPTY, of, throwError } from "rxjs";
-import { catchError, map, mergeMap, shareReplay, switchMap, tap } from "rxjs/operators";
+import { catchError, distinctUntilChanged, map, mergeMap, shareReplay, switchMap, tap } from "rxjs/operators";
 
 // servicio
 import { UsuariosService } from "../services/usuarios.service";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +46,7 @@ export class PagesEffects {
             mergeMap(({ id }) =>
                 this.usuarioService.eliminar(id).pipe(
                     shareReplay(),
+                    distinctUntilChanged(),
                     tap(data => console.log(data)),
                     map(data => PagesActions.eliminarUsuarioSuccess({ key: data })),
                     tap(data => of([])),
@@ -58,19 +60,21 @@ export class PagesEffects {
         switchMap(({ usuario, password }) =>
                 this.usuarioService.login(usuario, password).pipe(
                     map(({ token, usuario }) => {
-                        PagesActions.loginSucces({ usuario: usuario, token: token });
                         this.router.navigate(['/inicio']);
+                        return PagesActions.loginSucces({ usuario, token });
                     }),
-                    catchError((err) => of(PagesActions.loginFailure({error: err}))),
-                    catchError((err) => EMPTY),
-                    catchError((err) => throwError(err)),
-                    catchError((err) => {
-                        console.log(err);
+                    catchError(err => of(PagesActions.loginFailure({error: err.error.msj}))),
+                    catchError(err => {
+                        console.log('err :>> ', err);
                         return throwError(err)
-                    })
+                    }),
+                    catchError(err => throwError('error when retrieving hourly forecast', err)),
+                    catchError(err => throwError(err.error.msj)),
+                    catchError(() => EMPTY),
                 )
             )
-    ), { dispatch: false });
+        ));
+    // ), { dispatch: false });
 }
 
 
