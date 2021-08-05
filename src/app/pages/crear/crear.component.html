@@ -21,9 +21,30 @@
         </div>
         <input [disabled]="!formulario.valid" type="submit" value="Enviar">
     </form>
-    <div *ngIf="msj$ | async as msj">
-        <p> {{ msj }} </p>
+    <div class="fondo">
+        <div class="modal">
+            <div class="modal-header">
+                <p>Error</p>
+            </div>
+            <div class="modal-body">
+                <p> ok </p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" value="cancelar" />
+                <input type="button" value="eliminar" />
+            </div>
+            <!-- *ngIf="msj$ | async as msj" -->
+            <!-- <p> {{ msj  }} </p> -->
+        </div>
+    </div>
+    <div class="modal" *ngIf="err$ | async as err">
+        <div class="modal-header">
+            <p> error </p>
+        </div>
+        <div class="modal-body">
+            <p> {{ err }} </p>
+        </div>
     </div>
 
-    {{ formulario.value | json }}
+    <!-- {{ formulario.value | json }} -->
 </div>

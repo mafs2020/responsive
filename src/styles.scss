@@ -29,7 +29,7 @@
 .sidebar__menu #nav-toggle:checked ul li span:last-child{
     display: none;
 }
-
+@import '~ngx-toastr/toastr';
 @media screen and (max-width: 500px) {
 
     .gg{

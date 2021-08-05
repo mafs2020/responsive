@@ -81,7 +81,7 @@ export class PagesEffects {
             mergeMap((state) =>
             this.usuarioService.updateUser( state.user ).pipe(
                 map(() => PagesActions.crearAlumnoSuccess({msj: 'se creo el usuario'})),
-                catchError(err => of(PagesActions.crearAlumnoFailure({error:err})))
+                catchError(err => of(PagesActions.crearAlumnoFailure({error:err.error.msj})))
             ))
         )
     );

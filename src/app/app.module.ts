@@ -22,6 +22,9 @@ import { InterceptorService } from './interceptor/interceptor.service';
 import { rutasLoginModule } from './login/login.routes';
 import { environment } from 'src/environments/environment';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -34,6 +37,8 @@ import { environment } from 'src/environments/environment';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }

@@ -46,3 +46,42 @@ input[type="submit"]{
         cursor: not-allowed;
     }
 }
+
+.fondo{
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(000, 000, 000, 0.6);
+}
+
+.modal{
+    width: 300px;
+    height: 300px;
+    display: block;
+    background-color: #fff;
+    position: relative;
+    top: 30%;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-header p{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+    display: block;
+}
+.modal-header{
+    padding: auto;
+    background-color: darkred;
+    width: 100%;
+    color: #fff;
+    height: 20%;
+    padding: 20px;
+}

@@ -134,6 +134,7 @@ export const pageReducer = createReducer<PageState>(
     }),
 
     on(ProductActions.eliminarUsuarioSuccess, (state, { key }): PageState => {
+        console.log('ProductActions.eliminarUsuarioSuccess');
         return {
             ...state,
             currentProductId: key
@@ -141,6 +142,7 @@ export const pageReducer = createReducer<PageState>(
     }),
 
     on(ProductActions.eliminarUsuarioFailure, (state, { error }): PageState => {
+        console.log('ProductActions.eliminarUsuarioFailure');
         return {
             ...state,
             error
