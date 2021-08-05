@@ -15,14 +15,22 @@ header{
 }
 .buscador{
     margin: auto 0;
-    outline: 1px solid #000;
+    // outline: 1px solid #000;
+    display: flex;
+}
+
+.buscador label {
+    display: inline-block;
+    margin: auto;
+    margin-right: 10px;
 }
 
 .buscador input {
     width: 100%;
     border: none;
     outline: none;
-    padding: 0.5rem;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 .hamburguesa:first-child {
