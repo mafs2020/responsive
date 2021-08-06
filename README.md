@@ -2,6 +2,43 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
+## Imagenes
+Responsivo
+![](https://github.com/mafs2020/responsive/blob/main/src/assets/1.png)
+
+Monitor
+![](https://github.com/mafs2020/responsive/blob/main/src/assets/2.png)
+
+Login
+![](https://github.com/mafs2020/responsive/blob/main/src/assets/3.png)
+
+Crear 
+![](https://github.com/mafs2020/responsive/blob/main/src/assets/4.png)
+
+Aside
+![](https://github.com/mafs2020/responsive/blob/main/src/assets/5.png)
+
+## Tecnologias
+
+### Rxjs
+- shareReplay
+- distinctUntilChanged
+- tap
+- switchMap
+- throwError
+- EMPTY
+- mergeMap
+- map
+- catchError
+- 
+### Ngrx
+1. @angular/router
+2. @ngrx/effects
+3. @ngrx/store
+
+### Toastr
+- ngx-toastr
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
